@@ -8,13 +8,30 @@
 import SwiftUI
 
 struct PostGridView: View {
+    private let gridItems: [GridItem] = [
+        .init(.flexible(), spacing: 1),
+        .init(.flexible(), spacing: 1),
+        .init(.flexible(), spacing: 1)
+    ]
+    
+    let imageDimention: CGFloat = UIScreen.main.bounds.width/3 - 1
+    let posts: [Post]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        LazyVGrid(columns: gridItems, spacing: 1) {
+            ForEach(posts, id: \.id) {post in
+                Image(post.imageUrl)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: imageDimention, height: imageDimention)
+                    .clipped()
+            }
+        }
     }
 }
 
 struct PostGridView_Previews: PreviewProvider {
     static var previews: some View {
-        PostGridView()
+        PostGridView(posts: Post.MOCK_POSTS)
     }
 }

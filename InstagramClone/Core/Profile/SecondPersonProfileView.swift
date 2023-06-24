@@ -8,13 +8,27 @@
 import SwiftUI
 
 struct SecondPersonProfileView: View {
+    
+    let user: User!
+    var posts: [Post] {
+        return Post.MOCK_POSTS.filter({$0.user?.fullname == user.fullname})
+    }
+    let imageDimention: CGFloat = UIScreen.main.bounds.width/3 - 1
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            ScrollView {
+                //Header
+                ProfileHeaderView(user: user)
+                //Post View
+                PostGridView(posts: posts)
+
+            }
+            .navigationTitle("Profile")
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct SecondPersonProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        SecondPersonProfileView()
+        SecondPersonProfileView(user: User.MOCK_USER[1])
     }
 }
