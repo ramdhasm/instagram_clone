@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    
     let user: User!
     var posts: [Post] {
         return Post.MOCK_POSTS.filter({$0.user?.fullname == user.fullname})
@@ -28,7 +27,7 @@ struct ProfileView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                            
+                        AuthService.shared.logout()
                     } label: {
                         Image(systemName: "line.3.horizontal")
                             .foregroundColor(.black)
