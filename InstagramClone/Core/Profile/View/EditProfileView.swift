@@ -29,6 +29,7 @@ struct EditProfileView: View {
                 Button {
                     Task{
                         try await viewmodel.updateUserData()
+                        dismiss()
                     }
                 } label: {
                     Text("Done")
@@ -49,7 +50,7 @@ struct EditProfileView: View {
                             .clipShape(Circle())
                             .frame(width: 80, height: 80)
                     } else {
-                        CircularProfileImageView(user: viewmodel.user)
+                        CircularProfileImageView(user: viewmodel.user, size: .large)
                     }
                     Text("Edit Profile picture")
                         .font(.footnote)

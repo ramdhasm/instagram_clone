@@ -13,7 +13,7 @@ struct ProfileHeaderView: View {
     var body: some View {
         VStack(spacing: 10){
             HStack{
-                CircularProfileImageView(user: user)
+                CircularProfileImageView(user: user, size: .large)
                 Spacer()
                 HStack(spacing: 8) {
                     UserStatView(title: "Posts", value: 3)

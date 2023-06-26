@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchView: View {
+struct SearchView: View { 
     @StateObject var viewmodel = SearchViewModel()
     @State private var query = ""
     var body: some View {
@@ -17,11 +17,7 @@ struct SearchView: View {
                     ForEach(viewmodel.users, id: \.id) { user in
                         NavigationLink(value: user) {
                             HStack{
-                                Image(user.profileImageUrl ?? "profilePlaceholder")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle())
+                                CircularProfileImageView(user: user, size: .small)
                                 VStack(alignment: .leading){
                                     Text(user.username)
                                         .fontWeight(.semibold)
