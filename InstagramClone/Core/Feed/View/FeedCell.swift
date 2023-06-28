@@ -14,7 +14,7 @@ struct FeedCell: View {
         VStack {
             //Name and Image
             HStack(){
-                Image(post.user?.profileImageUrl ?? "profilePlaceholder")
+                KFImage(URL(string: post.user?.profileImageUrl ?? ""))
                     .resizable()
                     .scaledToFill()
                     .frame(width: 36, height: 36)

@@ -10,17 +10,14 @@ import SwiftUI
 struct ProfileView: View {
     
     let user: User!
-    var posts: [Post] {
-        return Post.MOCK_POSTS.filter({$0.user?.fullname == user.fullname})
-    }
-
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 //Header
                 ProfileHeaderView(user: user)
                 //Post View
-                PostGridView(posts: posts)
+                PostGridView(user: user)
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)

@@ -62,7 +62,6 @@ class EditProfileViewModel: ObservableObject {
         if !userData.isEmpty {
             try await Firestore.firestore().collection("users").document(user.id).updateData(userData)
         }
-        
     }
     
 }
